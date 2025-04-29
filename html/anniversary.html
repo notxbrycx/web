@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Anniversary</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(ellipse at bottom, #1d0030 0%, #4b0082 80%, #000000 100%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(255, 192, 203, 0.2);
+      max-width: 90%;
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      color: #e1bee7;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px #ba68c8;
+    }
+
+    p, #quote {
+      color: #f3e5f5;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    #quote {
+      font-style: italic;
+      margin-top: 10px;
+      transition: opacity 1s;
+    }
+
+    .love-button {
+      margin-top: 20px;
+      background-color: #ec407a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    .love-button:hover {
+      transform: scale(1.1);
+    }
+
+    audio {
+      margin-top: 20px;
+      display: inline-block;
+      border: 2px solid #ec407a;
+      border-radius: 10px;
+    }
+
+    .decoration {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      color: #e1bee7;
+      opacity: 0.9;
+      pointer-events: none;
+      transition: transform 0.3s;
+    }
+
+    .decoration:hover {
+      transform: scale(1.4) rotate(20deg);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ensures modal appears above other content */
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    .modal-content h2 {
+      color: #ec407a;
+    }
+
+    .modal-content p {
+      color: #333;
+      font-size: 1.2em;
+    }
+
+    .close {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ec407a;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 30px;
+    }
+
+    .close:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      p, #quote { font-size: 1em; }
+    }
+
+    /* Falling decoration animation */
+    @keyframes fall {
+      0% { transform: translateY(-100vh) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Floating animation for the side pictures */
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Positioning and styling for the side images */
+    .side-pic {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ba68c8;
+      animation: float 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    /* Individual positions for the 4 pictures */
+    .side-pic1 { top: 10%; left: 5%; }
+    .side-pic2 { top: 10%; right: 5%; }
+    .side-pic3 { bottom: 10%; left: 5%; }
+    .side-pic4 { bottom: 10%; right: 5%; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Decorative Images -->
+  <img src="pic1.jpg" class="side-pic side-pic1" alt="Decoration Pic 1">
+  <img src="pic2.jpg" class="side-pic side-pic2" alt="Decoration Pic 2">
+  <img src="pic3.jpg" class="side-pic side-pic3" alt="Decoration Pic 3">
+  <img src="pic4.jpg" class="side-pic side-pic4" alt="Decoration Pic 4">
+
+  <div class="container">
+    <h1 id="greeting">Loading...</h1>
+    <p>
+      You're my favorite person in this world 💜<br>
+      I'm so thankful for every day with you.
+    </p>
+    <p id="quote">Love is patient, love is kind...</p>
+    <button class="love-button" onclick="openModal()">💌 Click Here!</button>
+
+    <!-- Audio player -->
+    <audio id="bg-music" autoplay>
+      <source src="song.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <!-- Modal -->
+  <div id="message-modal" class="modal">
+    <div class="modal-content">
+      <h2>My Short Messages</h2>
+      <p>
+        "So, WHAT'S UP! I hope that this webpage i created would impress you:PP HAPPY HAPPY 1st ANNIVERSARRY! this 1 year is super hard but we're fighting for us, I love you so much!
+Let's keep on fighting for us, papakasalan kita babiii, we'll live this whole life together hehe. Madaming pagsubok but we'll overcome this all, ILOVEYOULOVEYOULOVEYOULOVEYOULOVEYOUUU!!."
+      </p>
+      <button class="close" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const girlfriendName = "Ma-dot Andrea:P";
+    const yearsTogether = 1;
+    document.getElementById('greeting').textContent = `Happy ${yearsTogether} Year, ${girlfriendName}!`;
+
+    const symbols = ['💜', '🦋', '⭐', '💖', '🌟', '💫'];
+    for (let i = 0; i < 30; i++) {
+      const el = document.createElement('div');
+      el.className = 'decoration';
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = 5 + Math.random() * 5 + 's';
+      el.style.fontSize = 20 + Math.random() * 20 + 'px';
+      el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      document.body.appendChild(el);
+    }
+
+    const quotes = [
+      "I still get butterflies, even after all this time.",
+      "You are my today and all of my tomorrows.",
+      "I love you more than words can say.",
+      "Forever isn’t long enough with you.",
+      "You're my person. Always."
+    ];
+    let quoteIndex = 0;
+    setInterval(() => {
+      const quote = document.getElementById('quote');
+      quote.style.opacity = 0;
+      setTimeout(() => {
+        quote.textContent = quotes[quoteIndex];
+        quote.style.opacity = 1;
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+      }, 1000);
+    }, 5000);
+
+    // Open Modal
+    function openModal() {
+      const modal = document.getElementById('message-modal');
+      modal.style.display = 'flex';
+    }
+
+    // Close Modal
+    function closeModal() {
+      const modal = document.getElementById('message-modal');
+      modal.style.display = 'none';
+    }
+
+    // To make audio autoplay after a user click
+    document.body.addEventListener('click', function () {
+      const music = document.getElementById('bg-music');
+      if (music.paused) {
+        music.play().catch(() => {});  // Try playing the music
+      }
+    }, { once: true });
+  </script>
+
+</body>
+</html>
